@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organização dos Homens Morcegos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&amp;display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Orbitron', sans-serif;
+        background-color: #0a0a0a;
+        color: white;
+      }
+
+      .hero {
+        background-image: url('https://i.imgur.com/fi7q5Fq.jpeg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        position: relative;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      .bat-sound {
+        display: none;
+      }
+
+      /* ======================
+       ESTILOS PERSONALIZADOS
+       ====================== */
+
+      .titulo-neon {
+        text-shadow: 0 0 5px #ffffff44, 0 0 10px #ffffffaa, 0 0 20px #ffffffcc;
+        color: #f1f1f1;
+      }
+
+      .galeria-img {
+        border: 2px solid #0f0f3d;
+        border-radius: 12px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .galeria-img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px #1f1f7a;
+      }
+
+      .btn-morcego {
+        background: linear-gradient(to right, #0f0f3d, #1a1a5e);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 9999px;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      .btn-morcego:hover {
+        background: linear-gradient(to right, #1a1a5e, #0f0f3d);
+      }
+
+      footer {
+        border-top: 1px solid #222;
+        box-shadow: 0 -2px 10px #00000088;
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+    <audio class="bat-sound" autoplay="" loop="">
+      <source src="https://cdn.pixabay.com/audio/2021/08/04/audio_9f57f08334.mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="hero flex items-center justify-center">
+      <div class="overlay"></div>
+      <div class="z-10 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold text-white titulo-neon">Organização dos Homens Morcegos</h1>
+        <p class="mt-4 text-xl">"A noite é nossa aliada."</p>
+        <button onclick="scrollToGallery()" class="mt-8 btn-morcego">Ver Momentos</button>
+      </div>
+    </section>
+
+    <section id="galeria" class="bg-black py-12 px-4 md:px-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-8">Galeria de Momentos</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <img src="https://i.imgur.com/mCZM5DY.jpeg" class="galeria-img" alt="Imagem 1">
+        <img src="https://i.imgur.com/zOlUOVu.jpeg" class="galeria-img" alt="Imagem 2">
+        <img src="https://i.imgur.com/NX3fFD0.jpeg" class="galeria-img" alt="Imagem 3">
+      </div>
+    </section>
+
+
+    <footer class="bg-gray-900 text-center py-6 text-white">
+      <p>© 2025 Organização dos Homens Morcegos. A noite protege os que nela confiam.</p>
+    </footer>
+
+    <script>
+      function scrollToGallery() {
+        document.getElementById('galeria').scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+
+      // Efeito de morcego surgindo ao rolar
+      window.addEventListener('scroll', () => {
+        const imgs = document.querySelectorAll('.galeria-img');
+        imgs.forEach((img, i) => {
+          const rect = img.getBoundingClientRect();
+          if (rect.top < window.innerHeight) {
+            img.style.transform = 'scale(1.05)';
+            img.style.transitionDelay = `${i * 100}ms`;
+          }
+        });
+      });
+    </script>
+
+
+  </body>
+
+</html>
